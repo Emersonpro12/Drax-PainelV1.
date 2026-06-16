@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Drax Team - iPhone Version</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        body {
+            background-color: #050508;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .panel-container {
+            width: 100%;
+            max-width: 450px;
+            background: rgba(10, 15, 30, 0.95);
+            border: 2px solid #00d2ff;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
+            overflow: hidden;
+        }
+
+        .panel-header {
+            width: 100%;
+            display: block;
+            border-bottom: 2px solid #ff7300;
+        }
+
+        .panel-header img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .panel-title {
+            text-align: center;
+            padding: 15px 0 2px 0;
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ff7300;
+            text-shadow: 0 0 10px rgba(255, 115, 0, 0.5);
+        }
+
+        .panel-subtitle {
+            text-align: center;
+            font-size: 11px;
+            color: #00d2ff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .panel-content {
+            padding: 20px;
+        }
+
+        .login-screen {
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .login-input {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            background: #1a233a;
+            border: 1px solid #00d2ff;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 16px;
+            text-align: center;
+            outline: none;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: #00d2ff;
+            border: none;
+            border-radius: 6px;
+            color: #050508;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .login-btn:hover {
+            background: #33e0ff;
+            box-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+        }
+
+        .error-msg {
+            color: #ff3333;
+            font-size: 13px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .control-group {
+            margin-bottom: 20px;
+        }
+
+        .control-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #00d2ff;
+        }
+
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: #1a233a;
+            outline: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #ff7300;
+            cursor: pointer;
+            box-shadow: 0 0 8px #ff7300;
+            transition: 0.2s;
+        }
+
+        .toggle-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0, 210, 255, 0.1);
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 26px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider-toggle {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #1a233a;
+            transition: .4s;
+            border-radius: 34px;
+            border: 1px solid rgba(0, 210, 255, 0.2);
+        }
+
+        .slider-toggle:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider-toggle {
+            background-color: #00d2ff;
+            box-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+        }
+
+        input:checked + .slider-toggle:before {
+            transform: translateX(24px);
+        }
+
+        .panel-footer {
+            text-align: center;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.4);
+            padding: 15px 0 10px 0;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <div class="panel-container">
+        <div class="panel-header">
+            <img src="1000017410.png" alt="Drax Painel V1">
+        </div>
+        <h2 class="panel-title">Drax Team</h2>
+        <div class="panel-subtitle">Versão iPhone</div>
+
+        <div class="login-screen" id="login-block">
+            <div style="font-size: 14px; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 1px;">Digite a senha de acesso</div>
+            <input type="password" id="password-input" class="login-input" placeholder="Senha">
+            <button class="login-btn" onclick="checkPassword()">Entrar</button>
+            <div class="error-msg" id="error-message">Senha Incorreta! Tente novamente.</div>
+        </div>
+
+        <div class="panel-content" id="main-content" style="display: none;">
+            <div class="control-group">
+                <div class="control-label">
+                    <span>AimBot</span>
+                    <span id="aimbot-val">50%</span>
+                </div>
+                <input type="range" min="0" max="100" value="50" class="slider" id="aimbot-slider" oninput="updateValue('aimbot')">
+            </div>
+            <div class="control-group">
+                <div class="control-label">
+                    <span>AimFov</span>
+                    <span id="aimfov-val">50%</span>
+                </div>
+                <input type="range" min="0" max="100" value="50" class="slider" id="aimfov-slider" oninput="updateValue('aimfov')">
+            </div>
+            <div class="control-group">
+                <div class="control-label">
+                    <span>Calibrar</span>
+                    <span id="calibrar-val">50%</span>
+                </div>
+                <input type="range" min="0" max="100" value="50" class="slider" id="calibrar-slider" oninput="updateValue('calibrar')">
+            </div>
+            <hr style="border: 0; height: 1px; background: rgba(255,115,0,0.2); margin: 25px 0 15px 0;">
+            <div class="toggle-container">
+                <span class="control-label" style="margin: 0; color: #ffffff;">Ump</span>
+                <label class="switch">
+                    <input type="checkbox" id="ump-toggle">
+                    <span class="slider-toggle"></span>
+                </label>
+            </div>
+            <div class="toggle-container">
+                <span class="control-label" style="margin: 0; color: #ffffff;">Xm8</span>
+                <label class="switch">
+                    <input type="checkbox" id="xm8-toggle">
+                    <span class="slider-toggle"></span>
+                </label>
+            </div>
+            <div class="panel-footer">@direitos autorais, Drax</div>
+        </div>
+    </div>
+    <script>
+        function checkPassword() {
+            const input = document.getElementById('password-input').value;
+            const error = document.getElementById('error-message');
+            if (input === 'DraxIphone') {
+                document.getElementById('login-block').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+            } else { error.style.display = 'block'; }
+        }
+        function updateValue(id) {
+            const slider = document.getElementById(id + '-slider');
+            const output = document.getElementById(id + '-val');
+            output.innerHTML = slider.value + "%";
+        }
+    </script>
+</body>
+</html>
